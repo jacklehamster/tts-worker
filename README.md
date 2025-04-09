@@ -1,3 +1,3 @@
 # tts-worker
 
-Template for building a Cloudflare worker repo
+Text to speech in Cloudflare worker
