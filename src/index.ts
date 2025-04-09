@@ -3,7 +3,7 @@ import { Buffer } from 'buffer';
 export default {
   async fetch(request: Request, env: any) {
     const url = new URL(request.url);
-    const text = url.searchParams.get("text") ?? "";
+    const text = url.searchParams.get("text") ?? "provide text";
     const languageCode = url.searchParams.get("languageCode") ?? "en-US";
     const name = url.searchParams.get("name") ?? "en-US-Standard-A";
     const encoding = url.searchParams.get("encoding") ?? "mp3";
