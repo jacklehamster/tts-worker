@@ -1,7 +1,5 @@
-import { Buffer } from 'buffer';
-
 export default {
-  async fetch(request: Request, env: any) {
+  async fetch(request: Request, env: any): Promise<Response> {
     const url = new URL(request.url);
     if (url.pathname === '/favicon.ico') {
       return Response.redirect("https://jacklehamster.github.io/tts-worker/icon.png");
