@@ -37,14 +37,20 @@ export default {
     });
 
     if (!ttsResponse.ok) {
-      return new Response("TTS API error", { status: 500 });
+      const errorText = await ttsResponse.text();
+      return new Response(`TTS API error: ${errorText}`, { status: 500 });
     }
 
     const { audioContent } = await ttsResponse.json<{ audioContent: string }>();
-    const audioBuffer = Buffer.from(audioContent, "base64");
+    // Replace Buffer with native base64 decoding
+    const binaryString = atob(audioContent);
+    const bytes = new Uint8Array(binaryString.length);
+    for (let i = 0; i < binaryString.length; i++) {
+      bytes[i] = binaryString.charCodeAt(i);
+    }
 
     const contentType = audioEncoding === "OGG_OPUS" ? "audio/ogg" : "audio/mp3";
-    return new Response(audioBuffer, {
+    return new Response(bytes, {
       headers: {
         "Content-Type": contentType,
       },
