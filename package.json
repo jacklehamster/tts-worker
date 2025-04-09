@@ -8,8 +8,11 @@
     "build": "bun i && tsc"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20250401.0",
-    "typescript": "^5.8.2"
+    "@cloudflare/workers-types": "^4.20250409.0",
+    "buffer": "^6.0.3",
+    "typescript": "^5.8.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "google-auth-library": "^9.15.1"
+  }
 }
